@@ -147,11 +147,7 @@ protected function _place($payment, $amount, $requestType)
 	}
 
 	$payment->setTransactionAdditionalInfo(
-        Mage_Sales_Model_Order_Payment_Transaction::RAW_DETAILS, array(
-            'status' => $transaction->getStatus (),    
-            'payment_method' => $transaction->getPaymentMethod (),
-            'boleto_url' => $transaction->getBoletoUrl ()
-        )
+        Mage_Sales_Model_Order_Payment_Transaction::RAW_DETAILS, array ('status' => $transaction->getStatus ())
     );
 
 	return $this;

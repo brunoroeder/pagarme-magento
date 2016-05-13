@@ -13,6 +13,8 @@
 
 class Inovarti_Pagarme_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    const SUBSCRIPTION_PLAN_ATTRIBUTE_CODE = 'pagarme_subscription_plan';
+
 	public function getOrderIdByTransactionId($tid)
 	{
 		$resource = Mage::getSingleton('core/resource');
@@ -20,6 +22,18 @@ class Inovarti_Pagarme_Helper_Data extends Mage_Core_Helper_Abstract
 		$select = $conn->select()
 			->from($resource->getTableName('sales/order_payment'))
 			->where('pagarme_transaction_id = ?', $tid)
+			->reset (Zend_Db_Select::COLUMNS)
+			->columns ('parent_id');
+		return $conn->fetchOne($select);
+	}
+
+	public function getOrderIdBySubscriptionId($tid)
+	{
+		$resource = Mage::getSingleton('core/resource');
+		$conn = $resource->getConnection('core_read');
+		$select = $conn->select()
+			->from($resource->getTableName('sales/order_payment'))
+			->where('pagarme_subscription_id = ?', $tid)
 			->reset (Zend_Db_Select::COLUMNS)
 			->columns ('parent_id');
 		return $conn->fetchOne($select);

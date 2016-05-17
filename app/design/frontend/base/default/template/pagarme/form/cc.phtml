@@ -105,21 +105,12 @@ Event.observe($('<?php echo $_code ?>_cc_cid'), 'keyup', function(){
 //<![CDATA[
     function pagarmeValidateFields() {
 
-<<<<<<< HEAD
-        cardNumber          = (document.getElementById( '<?php echo $_code ?>_cc_number' ).value);
-        cardInstallments    = (document.getElementById( '<?php echo $_code ?>_installments' ).value);
-        cardOwner           = (document.getElementById( '<?php echo $_code ?>_cc_owner' ).value);
-        cardExpiration      = (document.getElementById( '<?php echo $_code ?>_expiration' ).value);
-        cardExpirationYr    = (document.getElementById( '<?php echo $_code ?>_expiration_yr' ).value);
-        cardCid             = (document.getElementById( '<?php echo $_code ?>_cc_cid' ).value);
-=======
         pagarmeCardNumber          = (document.getElementById( '<?php echo $_code ?>_cc_number' ).value);
         pagarmeCardInstallments    = (document.getElementById( '<?php echo $_code ?>_installments' ).value);
         pagarmeCardOwner           = (document.getElementById( '<?php echo $_code ?>_cc_owner' ).value);
         pagarmeCardExpiration      = (document.getElementById( '<?php echo $_code ?>_expiration' ).value);
         pagarmeCardExpirationYr    = (document.getElementById( '<?php echo $_code ?>_expiration_yr' ).value);
         pagarmeCardCid             = (document.getElementById( '<?php echo $_code ?>_cc_cid' ).value);
->>>>>>> master
 
         if (!pagarmeCardNumber || !pagarmeCardInstallments || !pagarmeCardOwner || !pagarmeCardExpiration
             || !pagarmeCardExpirationYr || !pagarmeCardCid) {

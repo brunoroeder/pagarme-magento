@@ -35,6 +35,8 @@ class Inovarti_Pagarme_Model_Quote_Address_Total_Fee
             $shippingAmount = Mage::helper ('pagarme')->getShippingAmount();
             $total = $baseSubtotalWithDiscount + $shippingAmount;
 
+            $numberInstallments = $this->getMaxInstallments($total,$minInstallmentValue, $maxInstallments);
+
             $data = new Varien_Object();
             $data->setAmount(Mage::helper('pagarme')->formatAmount($address->getGrandTotal()))
                 ->setInterestRate($interestRate)
@@ -53,6 +55,10 @@ class Inovarti_Pagarme_Model_Quote_Address_Total_Fee
             $payment_installment = 0;
             if (isset ($post ['payment']['pagarme_checkout_installments'])) {
                 $payment_installment = $post ['payment']['pagarme_checkout_installments'];
+            }
+
+            if ($payment_installment === 1) {
+                return $this;
             }
 
             $this->prepareFeeAmount($collection,$payment_installment, $total, $quote, $address);
@@ -93,6 +99,10 @@ class Inovarti_Pagarme_Model_Quote_Address_Total_Fee
 
             if (isset ($post ['payment']['installments'])) {
                 $payment_installment = $post ['payment']['installments'];
+            }
+
+            if ($payment_installment === 1) {
+                return $this;
             }
 
             $this->prepareFeeAmount($collection,$payment_installment, $total, $quote, $address);

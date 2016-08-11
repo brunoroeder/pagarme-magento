@@ -13,6 +13,13 @@ class Inovarti_Pagarme_Block_Adminhtml_Recipients_Edit_Tab_Form
 
         $fieldset = $form->addFieldset("pagarme_form", array("legend"=>Mage::helper("pagarme")->__("Recipient Details")));
 
+	    $fieldset->addField("percentage", "text", array(
+            "label" => Mage::helper("pagarme")->__("Global Percentage"),
+            "name" => "percentage",
+            "class" => "required-entry",
+            "required" => true,
+        ));
+
         $fieldset->addField("transfer_enabled", "select", array(
             "label" => Mage::helper("pagarme")->__("Transfer Enabled"),
             "name" => "transfer_enabled",

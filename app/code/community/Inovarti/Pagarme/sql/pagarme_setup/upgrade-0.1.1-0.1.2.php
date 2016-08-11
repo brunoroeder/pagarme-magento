@@ -11,9 +11,9 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'primary'   => true,
     ), 'Id')
-    ->addColumn('split_rule_id', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
+    ->addColumn('sku', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
         'nullable'  => false,
-    ), 'Pagarme Split Rule Id')
+    ), 'Product sku')
     ->addColumn('recipient_id', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
         'nullable'  => false,
     ), 'Recipient id.')

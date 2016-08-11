@@ -19,8 +19,13 @@ class Inovarti_Pagarme_Block_Adminhtml_Splitrules_Grid
      * @return Mage_Adminhtml_Block_Widget_Grid
      */
     protected function _prepareCollection()
-    {
-        $model = Mage::getModel('pagarme/splitrules')->getCollection();
+	{
+		$productId = $this->getRequest()->getParam("id");
+		$currentProduct = Mage::getModel('catalog/product')->load($productId);
+
+		$model = Mage::getModel('pagarme/splitrules')->getCollection();
+	    $model->addFieldToFilter('sku', $currentProduct->getSku());
+
         $this->setCollection($model);
         return parent::_prepareCollection();
     }
@@ -38,13 +43,6 @@ class Inovarti_Pagarme_Block_Adminhtml_Splitrules_Grid
             "type" => "varchar",
             "index" => "entity_id",
             "sortable"  => false
-        ));
-
-        $this->addColumn("recipient_id", array(
-            "header" => Mage::helper("pagarme")->__("Recipient Id"),
-            "align" => "right",
-            "type" => "varchar",
-            "index" => "recipient_id"
         ));
 
         $this->addColumn("charge_processing_fee", array(

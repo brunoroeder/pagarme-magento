@@ -45,6 +45,14 @@ class Inovarti_Pagarme_Block_Adminhtml_Recipients_Grid
             "type" => "varchar",
             "index" => "id",
             "sortable"  => false
+		));
+
+        $this->addColumn("percentage", array(
+            "header" => Mage::helper("pagarme")->__("Global Percentage"),
+            "align" => "right",
+            "index" => "percentage",
+			"type" => "varchar",
+            "sortable"  => false
         ));
 
         $this->addColumn("transfer_enabled", array(

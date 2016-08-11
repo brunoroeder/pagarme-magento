@@ -7,8 +7,8 @@
 $installer = new Mage_Sales_Model_Resource_Setup('pagarme_setup');
 $installer->startSetup();
 
-function addFeeColumns ($installer)
-{
+//function addFeeColumns ($installer)
+//{
     $table = $installer->getTable ('sales/quote_address');
     
     $installer->getConnection ()
@@ -104,9 +104,9 @@ function addFeeColumns ($installer)
             'nullable' => false,
             'comment' => 'Base Fee Amount',
         ));
-}
+//}
 
-addFeeColumns ($installer);
+//addFeeColumns ($installer);
 
 $installer->endSetup();
 

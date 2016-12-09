@@ -63,8 +63,8 @@ class Inovarti_Pagarme_Model_Split extends Inovarti_Pagarme_Model_AbstractSplit
                 $amount = Mage::helper('pagarme')->formatAmount($splitAmount + $this->orderFeeAmount);
                 $splitRule[] = array(
                     'recipient_id'          => $recipientId,
-                    'charge_processing_fee' => $splitData['charge_processing_fee'],
-                    'liable'                => $splitData['liable'],
+                    'charge_processing_fee' => (boolean)$splitData['charge_processing_fee'],
+                    'liable'                => (boolean)$splitData['liable'],
                     'amount'                => $amount
                 );
             }
@@ -82,8 +82,8 @@ class Inovarti_Pagarme_Model_Split extends Inovarti_Pagarme_Model_AbstractSplit
 
             $splitRuleMarketplace[$this->marketplaceRecipientId] = array(
                 'recipient_id'          => $this->marketplaceRecipientId,
-                'charge_processing_fee' => $splitData['charge_processing_fee'],
-                'liable'                => $splitData['liable'],
+                'charge_processing_fee' => (boolean)$splitData['charge_processing_fee'],
+                'liable'                => (boolean)$splitData['liable'],
                 'amount' => $marketplaceAmount
             );
         }
@@ -117,8 +117,8 @@ class Inovarti_Pagarme_Model_Split extends Inovarti_Pagarme_Model_AbstractSplit
                 $splitRules[$recipientId] = array(
                     'seller'                => $lastedSplitRule['seller'] + $recipientValue,
                     'fee_marketplace'       => $lastedSplitRule['fee_marketplace'] + $currentAmount,
-                    'charge_processing_fee' => $recipientRule->getChargeProcessingFee(),
-                    'liable'                => $recipientRule->getLiable()
+                    'charge_processing_fee' => (boolean)$recipientRule->getChargeProcessingFee(),
+                    'liable'                => (boolean)$recipientRule->getLiable()
                 );
                 continue;
             }
